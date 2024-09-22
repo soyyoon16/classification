@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "classification"
+version = "0.1.0"
+description = "Machine Learning Model Deployment for Iris Classification"
+authors = ["Soyoung Yoon <soyyoon16@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,7 +1,10 @@
 import plotly.express as px
-
 from sklearn.datasets import load_digits
 from umap import UMAP
+
+import os
+
+print("Current working directory:", os.getcwd())
 
 
 def main():
@@ -19,4 +22,10 @@ def main():
         labels={"color": "digit"},
     )
 
-    fig.write_html("public/index.html")
+    print("Generating index.html...")
+    fig.write_html("index.html")
+
+
+# Call the main function
+if __name__ == "__main__":
+    main()

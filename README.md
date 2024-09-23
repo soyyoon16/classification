@@ -1,8 +1,8 @@
-# **Machine Learning Model Deployment for Iris Classification**
+# **ML App CI: Setting up a CI/CD Pipeline for ML model Training and Deployment**
 
 ## **Overview**
 
-This project demonstrates an end-to-end Machine Learning Operations (MLOps) pipeline using GitHub Actions for continuous integration and continuous deployment (CI/CD). We use the Iris dataset, a classic machine learning classification problem, to build, train, and deploy a machine learning model. This project focuses on understanding the MLOps infrastructure and inference API design rather than the complexity of the model itself.
+Problem 4 is designed to help you practice the essential components of deploying a machine learning pipeline, building documentation, and ensuring continuous integration and continuous deployment (CI/CD) with GitHub Actions. This project focuses on understanding the Machine Learning Operations (MLOps) infrastructure and inference API design rather than the complexity of the model itself.
 
 ## **Key Features**
 
@@ -28,6 +28,7 @@ classification/
 │   ├── __init__.py
 │   ├── train.py                    # Model training script
 │   ├── inference.py                # Model inference script
+│   ├── iris_data.json              # Your provided JSON data file
 │   └── visualize.py                # Visualization script
 ├── tests/                          # Unit test files
 │   └── test_ml_app.py

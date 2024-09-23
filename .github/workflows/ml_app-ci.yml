@@ -33,8 +33,17 @@ jobs:
     - name: Build documentation
       run: poetry run sphinx-build -b html docs/ docs/_build
 
+    - name: Run Visualization
+      run: poetry run python visualize.py
+
     - name: Upload model artifact
       uses: actions/upload-artifact@v3
       with:
         name: trained-model
         path: out.json
+
+    - name: Upload visualization
+      uses: actions/upload-artifact@v3
+      with:
+        name: visualization
+        path: index.html 

@@ -28,7 +28,7 @@ jobs:
       run: poetry run sphinx-build -b html docs/ docs/_build
 
     - name: Upload model artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: trained-model
         path: out.json

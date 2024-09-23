@@ -20,6 +20,9 @@ jobs:
 
     - name: Install dependencies
       run: poetry install
+
+    - name: Install the required Sphinx version
+      run: poetry add sphinx@">=5.0,<6.0" --group dev
       
     - name: Run pre-commit checks
       run: poetry run pre-commit run --all-files

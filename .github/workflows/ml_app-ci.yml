@@ -1,0 +1,34 @@
+name: ML App CI
+
+on: [push, pull_request]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Check-out repository
+      uses: actions/checkout@v2
+
+    - name: Install poetry
+      uses: snok/install-poetry@v1
+
+    - name: Install dependencies
+      run: poetry install
+
+    - name: Run pytest
+      run: poetry run pytest
+
+    - name: Build documentation
+      run: poetry run sphinx-build -b html docs/ docs/_build
+
+    - name: Upload model artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: trained-model
+        path: out.json

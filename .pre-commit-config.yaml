@@ -1,0 +1,15 @@
+repos:
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: 'v0.1.5'
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        language: python
+        entry: black
+        types: [python]

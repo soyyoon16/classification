@@ -19,6 +19,7 @@ def main():
             "data": record,
             "label": label,
         }
-    for record, label in zip(data, m(data))]
+        for record, label in zip(data, m(data))
+    ]
 
     json.dump(records, open("out.json", "w"))

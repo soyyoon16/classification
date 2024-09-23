@@ -16,7 +16,7 @@ def main():
         x=0,
         y=1,
         color=digits.target.astype(str),
-        labels={"color": "digit"}
+        labels={"color": "digit"},
     )
 
     fig.write_html("public/index.html")

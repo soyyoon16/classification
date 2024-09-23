@@ -12,7 +12,9 @@ class Model:
 
     def __call__(self, data):
         for record in data:
-            if len(record) != len(self.labels) and not all([isinstance(val, float) or isinstance(val, int) for val in record]):
+            if len(record) != len(self.labels) and not all(
+                [isinstance(val, float) or isinstance(val, int) for val in record]
+            ):
                 raise ValueError(f"Malformed data record {record}")
 
         yield from (self.labels[label] for label in self.model.predict(data))
@@ -21,7 +23,9 @@ class Model:
         iris_dataset = load_iris()
         self.features = iris_dataset.feature_names
         self.labels = iris_dataset.target_names
-        x_train, x_test, y_train, y_test = train_test_split(iris_dataset.data, iris_dataset.target, test_size=0.5)
+        x_train, x_test, y_train, y_test = train_test_split(
+            iris_dataset.data, iris_dataset.target, test_size=0.5
+        )
         self._train_data = (x_train, y_train)
         self._eval_data = (x_test, y_test)
 

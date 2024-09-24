@@ -11,5 +11,6 @@ repos:
       - id: black
         name: black
         language: python
+        pass_filenames: true
         entry: black
         types: [python]

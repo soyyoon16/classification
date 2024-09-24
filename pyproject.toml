@@ -3,6 +3,7 @@ name = "classification"
 version = "0.1.0"
 description = "Machine Learning Model Deployment for Iris Classification"
 authors = ["Soyoung Yoon <soyyoon16@gmail.com>"]
+packages = [{ include = "ml_app" }] 
 license = "MIT"
 readme = "README.md"
 
@@ -16,11 +17,14 @@ pandas = "^2.2.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
-sphinx = "<5.0"
-sphinx-autoapi = "<2.0"
-sphinx-rtd-theme = "<1.0.0"
+sphinx = ">=5.0"
+sphinx-autoapi = "^3.3.1"
+sphinx-rtd-theme = "^2.0.0"
 pre-commit = "^3.8.0"
 black = "^24.8.0"
+ruff = "^0.6.7"
+myst-nb = "^1.1.1"
+
 
 [build-system]
 requires = ["poetry-core"]

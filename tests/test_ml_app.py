@@ -3,6 +3,12 @@ from ml_app.train import Model
 
 
 def test_model_initialization():
+    """
+    Test the initialization of the Model class.
+
+    Ensures that the model attributes are correctly set during initialization and
+    that the evaluation accuracy score is non-negative.
+    """
     model = Model()
     assert model.dataset == "iris"
     assert model.architecture == "KNN"
@@ -10,6 +16,14 @@ def test_model_initialization():
 
 
 def test_inference():
+    """
+    Test the inference functionality of the Model class.
+
+    Verifies that the model correctly predicts the class label for a given input data point.
+
+    Raises:
+        AssertionError: If the prediction does not match the expected class label.
+    """
     model = Model()
     test_data = [
         [5.1, 3.5, 1.4, 0.2]

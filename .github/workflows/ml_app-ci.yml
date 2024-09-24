@@ -22,7 +22,7 @@ jobs:
       run: poetry install
 
     - name: Install the required Sphinx version
-      run: poetry add sphinx@">=5.0,<6.0" --group dev
+      run: poetry add sphinx@">=6.1.0" --group dev
       
     - name: Run pre-commit checks
       run: poetry run pre-commit run --all-files

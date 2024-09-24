@@ -72,8 +72,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for ml_app.train</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pickle</span> 
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
@@ -101,6 +100,7 @@
 <span class="sd">        _score(): Evaluates the model and returns the accuracy score.</span>
 <span class="sd">        _train(test_size): Trains the KNN model using the Iris dataset.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes the Model class by setting up the dataset, model architecture, and training the model.</span>
@@ -135,7 +135,9 @@
 <span class="sd">            ValueError: If the input data record is malformed (i.e., incorrect number of features or non-numeric values).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">record</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span>
+                <span class="p">[</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">record</span><span class="p">]</span>
+            <span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Malformed data record </span><span class="si">{</span><span class="n">record</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">yield from</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">))</span></div>
@@ -149,7 +151,7 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            test_size (float, optional): Proportion of the dataset to be used for testing. Default is 0.5.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Attributes set:</span>
 <span class="sd">            features (list): List of feature names from the Iris dataset.</span>
 <span class="sd">            labels (list): List of target labels from the Iris dataset.</span>
@@ -159,7 +161,9 @@
         <span class="n">iris_dataset</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">iris_dataset</span><span class="o">.</span><span class="n">feature_names</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">iris_dataset</span><span class="o">.</span><span class="n">target_names</span>
-        <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">iris_dataset</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris_dataset</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+            <span class="n">iris_dataset</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris_dataset</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_train_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_eval_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span></div>
 
@@ -185,7 +189,7 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            test_size (float, optional): Proportion of the dataset to be used for testing. Default is 0.5.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Sets the attributes:</span>
 <span class="sd">            model (KNeighborsClassifier): Trained KNN model.</span>
 <span class="sd">            eval (float): Accuracy score of the model on the evaluation dataset.</span>

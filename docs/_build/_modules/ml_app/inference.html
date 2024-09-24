@@ -82,19 +82,19 @@
 <a class="viewcode-back" href="../../autoapi/ml_app/inference/index.html#ml_app.inference.main">[docs]</a>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Main function that initializes a machine learning model, loads data from the environment, </span>
+<span class="sd">    Main function that initializes a machine learning model, loads data from the environment,</span>
 <span class="sd">    makes predictions using the model, and saves the results in a JSON file.</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: If no data is provided in the &#39;DATA&#39; environment variable.</span>
-<span class="sd">    </span>
+
 <span class="sd">    The output JSON file contains a list of records, each with the following fields:</span>
 <span class="sd">        - dataset: The name of the dataset used for training the model (e.g., &#39;iris&#39;).</span>
 <span class="sd">        - architecture: The architecture of the model used (e.g., &#39;KNN&#39;).</span>
 <span class="sd">        - features: The evaluation score (accuracy) of the model.</span>
 <span class="sd">        - data: The input data record.</span>
 <span class="sd">        - label: The predicted label for the data record.</span>
-<span class="sd">    &quot;&quot;&quot;</span>  
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DATA&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
